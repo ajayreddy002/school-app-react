@@ -1,0 +1,58 @@
+@import 'src/variables/fonts.scss';
+.main_block_das {
+    padding: 15px 15px;
+
+    .card {
+        background: #fff;
+        cursor: pointer;
+        box-shadow: 0 10px 20px 0 rgba(229, 229, 229, .75);
+        border-radius: 5px;
+        padding: 16px;
+    }
+
+    .img_block {
+        position: relative;
+        height: 85px;
+        width: 85px;
+        line-height: 85px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: #d1f3e0;
+        &.yellow_bg {
+            background-color: #fff2d8;
+        }
+        &.blue_bg {
+            background-color: #e1f1ff;
+        }
+        &.red_bg {
+            background-color: #ffeaea;
+        }
+        svg {
+            fill: palevioletred;
+        }
+        img, svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .txt_block {
+        h4 {
+            color: #a8a8a8;
+            line-height: 20px;
+            font-size: 16px;
+            font-family: $mini_header;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        p {
+            color: #111;
+            font-family: $para_font;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: left;
+        }
+    }
+}

@@ -1,26 +1,83 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.scss';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Login } from './components/login/loginComponent';
+import SideNav from './components/sidebar/sideBar';
+import '../src/components/sidebar/sideBar.scss';
+import { authenticationService } from './_services/authService';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+interface AuthModal {
+  currentUser: any;
+  location: string;
 }
+// const App: React.FC = () => {
+//   const currentPath = window.location.pathname;
+//   return (
+//     <div className="App">
+//       <BrowserRouter>
+//         <div className="App">
+//           <Route exact path='/login' component={Login} />
+//           {!currentPath.includes('login') && <SideNav />}
+//         </div>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+class App extends React.Component<{}, AuthModal> {
+  public state: AuthModal;
 
+  constructor(props: AuthModal) {
+    super(props);
+    this.state = {
+      currentUser: null,
+      location: ''
+    };
+    if (localStorage.getItem('currentUser')) {
+      this.state.currentUser = localStorage.getItem('currentUser')
+    }
+  }
+  componentDidMount = () => {
+    authenticationService.currentUser.subscribe(data => this.setState({
+      currentUser: data
+    }))
+  }
+  logout = () => {
+    authenticationService.logout();
+    // <Redirect
+    //   to={{
+    //     pathname: "/login"
+    //   }} />
+  }
+  render() {
+    const { currentUser } = this.state;
+    return (
+      <div className="App">
+        <ToastContainer />
+        <BrowserRouter>
+          <div className="App">
+            <div>
+              {currentUser &&
+                <div>
+                  {/* <Link to='/'></Link> */}
+                  <SideNav />
+                </div>
+              }
+            </div>
+            {!currentUser &&
+              <div>
+                <Route exact path='/login' component={Login} />
+                {
+                  !currentUser ?  <Redirect to={{
+                    pathname: "/login",
+                  }} /> : null
+                }
+              </div>
+            }
+          </div>
+        </BrowserRouter>
+      </div>
+    )
+  }
+}
 export default App;

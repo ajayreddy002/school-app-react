@@ -1,0 +1,223 @@
+@import 'src/variables/fonts.scss';
+
+.side_nav_block {
+    display: flex;
+}
+
+.side_nav {
+    height: 100%;
+    width: 220px;
+    background-color: #1e1e2d;
+    opacity: 1;
+    position: fixed;
+    transition: 0.3s ease-in-out;
+}
+
+.side_nav_content {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+
+    ul {
+        margin: 0;
+        list-style: none;
+        padding: 15px 25px;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            float: none;
+            padding: 0;
+            position: relative;
+            margin: 0;
+
+            .route_link {
+                padding: 9px 25px;
+                cursor: pointer;
+                display: flex;
+                -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                -webkit-box-align: stretch;
+                -ms-flex-align: stretch;
+                align-items: stretch;
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+                position: relative;
+                outline: none;
+                min-height: 44px;
+                outline: none !important;
+                color: #a2a3b7;
+                font-family: $para_font;
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 15px;
+
+                .route_link_icon {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 35px;
+                    flex: 0 0 35px;
+                    font-size: 1.3rem;
+                    color: #494b74;
+
+                    .MuiSvgIcon-root {
+                        height: 20px;
+                        width: 20px;
+                        margin-left: -2px;
+                        transition: fill 0.3s ease;
+                        fill: #494b74;
+                        margin-top: -2px;
+                    }
+                    .img_block {
+                        width: 20px;
+                    }
+                }
+            }
+
+            &:hover {
+                transition: background-color 0.3s;
+
+                .route_link {
+                    background-color: #1b1b28;
+                    color: #ffffff;
+
+                    .route_link_icon {
+                        .MuiSvgIcon-root {
+                            fill: #5d78ff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main_content {
+    width: 100%;
+    margin-left: 220px;
+}
+
+.top_nav {
+    position: sticky;
+    height: 64px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eff0f6;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.08);
+
+    p {
+        float: right;
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+}
+
+.route_content {
+    /* margin-left: 250px; */
+    background-color: #e8e9ef;
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+}
+
+.logo_block {
+    padding: 0 25px;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        color: #ffffff;
+        font-size: 22px;
+        font-family: $mini_header;
+    }
+}
+
+.svg_block {
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    &:hover {
+        svg g [fill] {
+            fill: #5d78ff;
+        }
+    }
+
+    svg g [fill] {
+        transition: fill 0.3s ease;
+        fill: #494b74;
+
+    }
+}
+
+.displayNone {
+    .side_nav {
+        width: 60px;
+
+        .route_link {
+            display: none;
+        }
+
+        &:hover {
+            width: 220px;
+            transition: 0.3s ease-in-out;
+
+            .route_link {
+                display: block;
+            }
+        }
+    }
+}
+
+.displayBlock {
+    .side_nav {
+        display: block;
+    }
+}
+
+.menu_block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    vertical-align: middle;
+    .badge {
+        margin-right: 25px;
+        cursor: pointer;
+    }
+    button {
+        outline: none;
+        margin-right: 20px;
+
+        .name {
+            margin-right: 10px;
+            font-family: 'Roboto', sans-serif;
+            text-transform: none;
+        }
+    }
+}
+.action_text {
+    font-family: $header_font !important;
+    font-size: 14px !important;
+}
+.icon {
+    margin-right: 10px !important;
+}
+.bigAvatar {
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+}

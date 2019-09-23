@@ -1,0 +1,235 @@
+@import 'src/variables/fonts.scss';
+.main_block {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-image: linear-gradient(to right top, #0266b4, #0065ad, #0063a6, #02629f, #096098);
+
+    .login_block {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        position: relative;
+        padding: 40px 60px 40px 60px;
+
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            color: #555555;
+            line-height: 1.2;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            display: block;
+            padding-bottom: 25px;
+        }
+
+        .login_form {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+
+        .input_block {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 2px;
+            margin-bottom: 20px;
+
+            label {
+                font-size: 13px;
+                color: #555555;
+                line-height: 1.4;
+                text-transform: uppercase;
+                padding-bottom: 11px;
+            }
+
+            input {
+                color: #555555;
+                line-height: 1.2;
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                background: transparent;
+                height: 45px;
+                padding: 0 25px 0 25px;
+                outline: none;
+                border: 1px solid #e6e6e6;
+                border-radius: 5px;
+            }
+        }
+
+        .btn_block {
+            text-align: center;
+            padding-top: 15px;
+
+            button {
+                padding: 8px 20px 10px 20px;
+                background: #0163a6;
+                border: none;
+                outline: none;
+                color: #fff;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+.main_block1 {
+    background-image: url(../../assets/images/bg-1.e0c2a4f8201e160f0e7f.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    .login_wraper {
+        padding: 6% 2rem 1rem 2rem;
+        margin: 0 auto 2rem auto;
+        overflow: hidden;
+
+        .login__container {
+            width: 430px;
+            margin: 0 auto;
+
+            .login__logo {
+                text-align: center;
+                margin: 0 auto 4rem auto;
+            }
+
+            .login__signin {
+                display: block;
+                transition: 0.3s cubic-bezier(1, 0.89, 0.01, 0.46);
+                .login__title {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    color: #fff;
+                    font-family: $para_font;
+                    transition: 0.3s cubic-bezier(1, 0.89, 0.01, 0.46);
+                }
+
+                form {
+                    margin: 2rem auto;
+                    transition: 0.3s cubic-bezier(1, 0.89, 0.01, 0.46);
+                    .input-group {
+                        padding: 0;
+                        margin: 0 auto;
+
+                        input,textarea {
+                            height: 42px;
+                            border-radius: 46px;
+                            border: none;
+                            padding-left: 1.5rem;
+                            padding-right: 1.5rem;
+                            margin-top: 1.5rem;
+                            background: rgba(67, 34, 167, 0.8);
+                            width: 100%;
+                            outline: none;
+                            color: $white;
+                            font-family: $para_font;
+                            font-size: 12px;
+                            font-weight: 400;
+                            &::placeholder {
+                                color: #bbabf1;
+                            }
+                        }
+                        textarea {
+                            height: 60px;
+                        }
+                        .pass {
+                            margin-top: 40px;
+                        }
+                    }
+
+                    .login__extra {
+                        padding-left: 7px;
+                        padding-right: 7px;
+                        margin: 15px auto;
+                        color: rgba(255, 255, 255, 0.6);
+                        font-size: 1rem;
+                        display: flex;
+                        justify-content: space-between;
+
+                        .align-right {
+                            text-align: right;
+
+                            p {
+                                text-decoration: none;
+                                color: #bbabf1;
+                                font-family: $para_font;
+                                font-size: 13px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    color: $white;
+                                }
+                            }
+                        }
+                    }
+
+                    .login__actions {
+                        text-align: center;
+                        margin-top: 7%;
+
+                        button {
+                            height: 46px;
+                            display: inline-block;
+                            text-align: center;
+                            padding-left: 4rem;
+                            padding-right: 4rem;
+                            margin-top: 0.8rem;
+                            border-radius: 60px;
+                            background: transparent;
+                            color: rgba(255, 255, 255, 0.8);
+                            border: 1px solid transparent;
+                            border-color: rgba(255, 255, 255, 0.4);
+                            outline: none !important;
+                            vertical-align: middle;
+                            font-family: $para_font;
+                            font-size: 1rem;
+                            line-height: 1.5;
+
+                            &:hover {
+                                color: #fff;
+                                border-color: #fff;
+                            }
+                        }
+                    }
+                }
+
+                .sign_up_switch {
+                    text-align: center;
+                    margin-top: 2rem;
+
+                    .login__account-msg {
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        color: #bbabf1;
+                        font-family: $para_font;
+                        display: flex;
+                        p {
+                            color: $white;
+                            font-family: $para_font;
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            cursor: pointer;
+                            margin: 0;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.hide_block {
+    transition: 0.3s cubic-bezier(1, 0.89, 0.01, 0.46);
+}
