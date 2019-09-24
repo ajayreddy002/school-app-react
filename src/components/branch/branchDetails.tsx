@@ -15,7 +15,10 @@ export default class BranchDetails extends Component {
             branchData: []
         }
         this.getBranchData = this.getBranchData.bind(this);
+    }
+    componentDidMount(){
         this.getBranchData();
+
     }
     getBranchData = () => {
         const localData: any = localStorage.getItem('currentUser');

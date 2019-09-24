@@ -48,7 +48,7 @@ export class Login extends Component {
         });
     }
     submitLoginData = (loginData: LoginModel) => {
-        LoginService.postLoginData('loginschool', loginData)
+        LoginService.postLoginData('login', loginData)
             .then(data => {
                 console.log(data.data);
                 authenticationService.login(data.data);
