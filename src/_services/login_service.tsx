@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3000/';
+const baseUrl = 'https://management-school-api.herokuapp.com/';
 export const LoginService = {
   // baseUrl = 'https://management-school-api.herokuapp.com/';
   postLoginData,

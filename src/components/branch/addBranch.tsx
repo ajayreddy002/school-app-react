@@ -9,6 +9,16 @@ import {
 import { IBranchModel } from '../../_routes/_models/branchModel';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BranchServices from '../../_services/branchServices';
+import { toast } from 'react-toastify';
+const defaultValues = {
+    email: '',
+    password: '',
+    branch_name: '',
+    user_name: '',
+    branch_address: '',
+    roll: 2,
+    school_id: ''
+}
 export default class AddBranch extends Component {
     render() {
         return (
@@ -18,7 +28,9 @@ export default class AddBranch extends Component {
                     password: '',
                     branch_name: '',
                     user_name: '',
-                    branch_address: ''
+                    branch_address: '',
+                    roll: 2,
+                    school_id: ''
                 }}
                 validate={values => {
                     const errors: Partial<IBranchModel> = {};
@@ -46,11 +58,38 @@ export default class AddBranch extends Component {
                     }
                     return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
+                    const schoolDetails: any = localStorage.getItem('currentUser');
+                    const schoolId = JSON.parse(schoolDetails);
+                    values.school_id = schoolId.school_id;
                         setSubmitting(false);
-                        BranchServices.postBranchData('addbranch', values);
-                    }, 500);
+                        BranchServices.postBranchData('addbranch', values)
+                            .then((data: any) => {
+                                toast.success(`${data.branch_name} Created successfully`, {
+                                    position: 'bottom-center',
+                                    draggable: false,
+                                    hideProgressBar: true,
+                                    autoClose: 5000
+                                });
+                                resetForm(defaultValues);
+                            }).catch(err => {
+                                if (err.message.includes(403)) {
+                                    toast.error('Branch already exists', {
+                                        position: 'bottom-center',
+                                        draggable: false,
+                                        hideProgressBar: true,
+                                        autoClose: 5000
+                                    });
+                                }
+                                if (err.message.includes(500)) {
+                                    toast.error('Something went wrong', {
+                                        position: 'bottom-center',
+                                        draggable: false,
+                                        hideProgressBar: true,
+                                        autoClose: 5000
+                                    })
+                                }
+                            })
                 }}
                 render={({ submitForm, isSubmitting }) => (
                     <div className="add_branch_block">

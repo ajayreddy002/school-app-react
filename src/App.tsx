@@ -7,6 +7,8 @@ import '../src/components/sidebar/sideBar.scss';
 import { authenticationService } from './_services/authService';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+// Token interceptor
+import '../src/_services/tokenIterceptor';
 interface AuthModal {
   currentUser: any;
   location: string;
