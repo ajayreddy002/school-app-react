@@ -10,6 +10,8 @@ import { IBranchModel } from '../../_routes/_models/branchModel';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BranchServices from '../../_services/branchServices';
 import { toast } from 'react-toastify';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
+
 const defaultValues = {
     email: '',
     password: '',
@@ -62,38 +64,43 @@ export default class AddBranch extends Component {
                     const schoolDetails: any = localStorage.getItem('currentUser');
                     const schoolId = JSON.parse(schoolDetails);
                     values.school_id = schoolId.school_id;
-                        setSubmitting(false);
-                        BranchServices.postBranchData('addbranch', values)
-                            .then((data: any) => {
-                                toast.success(`${data.branch_name} Created successfully`, {
+                    setSubmitting(false);
+                    BranchServices.postBranchData('addbranch', values)
+                        .then((data: any) => {
+                            toast.success(`${data.branch_name} Created successfully`, {
+                                position: 'bottom-center',
+                                draggable: false,
+                                hideProgressBar: true,
+                                autoClose: 5000
+                            });
+                            resetForm(defaultValues);
+                        }).catch(err => {
+                            if (err.message.includes(403)) {
+                                toast.error('Branch already exists', {
                                     position: 'bottom-center',
                                     draggable: false,
                                     hideProgressBar: true,
                                     autoClose: 5000
                                 });
-                                resetForm(defaultValues);
-                            }).catch(err => {
-                                if (err.message.includes(403)) {
-                                    toast.error('Branch already exists', {
-                                        position: 'bottom-center',
-                                        draggable: false,
-                                        hideProgressBar: true,
-                                        autoClose: 5000
-                                    });
-                                }
-                                if (err.message.includes(500)) {
-                                    toast.error('Something went wrong', {
-                                        position: 'bottom-center',
-                                        draggable: false,
-                                        hideProgressBar: true,
-                                        autoClose: 5000
-                                    })
-                                }
-                            })
+                            }
+                            if (err.message.includes(500)) {
+                                toast.error('Something went wrong', {
+                                    position: 'bottom-center',
+                                    draggable: false,
+                                    hideProgressBar: true,
+                                    autoClose: 5000
+                                })
+                            }
+                        })
                 }}
                 render={({ submitForm, isSubmitting }) => (
                     <div className="add_branch_block">
-                        <h3>Add branch</h3>
+                        <div className="icon_block">
+                            <div className="icon_set">
+                                <AddRoundedIcon/>
+                            </div>
+                            <h4>Add branch</h4>
+                        </div>
                         <div className="add_branch_form">
                             <Form>
                                 <div className="row">

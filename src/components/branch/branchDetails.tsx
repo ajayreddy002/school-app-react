@@ -20,7 +20,7 @@ export default class BranchDetails extends Component {
         this.getBranchData();
 
     }
-    getBranchData = () => {
+    getBranchData  () {
         const localData: any = localStorage.getItem('currentUser');
         const Id = JSON.parse(localData);
         BranchServices.getBranchData(`branch/${Id.school_id}`)
@@ -82,7 +82,7 @@ export default class BranchDetails extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {this.state.branchData !== undefined && this.state.branchData.map((item: any) =>
+                                {this.state.branchData.map((item: any) =>
                                     <TableRow key={item._id}>
                                         <TableCell className="content" component="th" scope="row">
                                             {item.branch_name}
