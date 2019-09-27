@@ -119,7 +119,7 @@
 
 .route_content {
     /* margin-left: 250px; */
-    background-color: #e8e9ef;
+    background-color: #f3f3f3;
     position: relative;
     z-index: 1;
     display: block;
@@ -220,4 +220,7 @@
     margin: 10px;
     width: 60px;
     height: 60px;
+}
+.MuiDivider-root {
+    background-color: rgba(243, 230, 230, 0.12) !important;
 }

@@ -7,6 +7,7 @@ import AccountTreeRoundedIcon from '@material-ui/icons/AccountTreeRounded';
 import '../dashboard/dashBoard.scss';
 import { authenticationService } from '../../_services/authService';
 import BranchDashBoard from './branchDashboard/branchDashBoard';
+import TeacherDashBoard from '../teacher/dashboard/teachersDashBoard';
 export class DashBoard extends Component {
     public state: any;
     constructor(props: any) {
@@ -102,6 +103,9 @@ export class DashBoard extends Component {
                 }
                 {userData.roll === 2 &&
                     <BranchDashBoard />
+                }
+                {userData.roll === 3 &&
+                    <TeacherDashBoard />
                 }
             </div>
         )

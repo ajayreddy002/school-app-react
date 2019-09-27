@@ -7,6 +7,9 @@ import '../branch/branches.scss';
 import AddIcon from '@material-ui/icons/Add';
 import BranchServices from '../../_services/branchServices';
 import { toast } from 'react-toastify';
+import { handleResponse } from '../../_healpers/responseHanlder';
+import swal from 'sweetalert';
+import { authenticationService } from '../../_services/authService';
 export default class BranchDetails extends Component {
     public state: any;
     constructor(props: any) {
@@ -16,20 +19,32 @@ export default class BranchDetails extends Component {
         }
         this.getBranchData = this.getBranchData.bind(this);
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getBranchData();
 
     }
-    getBranchData  () {
+    getBranchData() {
         const localData: any = localStorage.getItem('currentUser');
         const Id = JSON.parse(localData);
         BranchServices.getBranchData(`branch/${Id.school_id}`)
+            .then(handleResponse)
             .then((data: any) => {
                 this.setState({
-                    branchData: data.data.branchDetails
+                    branchData: data.branchDetails
                 })
             }).catch(err => {
-                console.log(err);
+                if (err.response.status === 403) {
+                    swal({
+                        title: err.response.data.message,
+                        text: err.response.data.message,
+                        icon: "error",
+                        dangerMode: true,
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                           authenticationService.logout();
+                        }
+                    });
+                }
             })
     }
     deleteBranch(branch: any): void {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import { pushRotate as Menu } from "react-burger-menu";
 import { Switch, NavLink, Route } from 'react-router-dom';
 import DashBoard from '../dashboard/dashBoard';
-import AddTeacher from '../hr&payroll/addTeacherComponent';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountTreeRoundedIcon from '@material-ui/icons/AccountTreeRounded';
@@ -12,7 +11,11 @@ import UserMenu from './userMenu';
 import BranchDetails from '../branch/branchDetails';
 import LocalLibraryRoundedIcon from '@material-ui/icons/LocalLibraryRounded';
 import AddBranch from '../branch/addBranch';
+import AddTeacher from '../teacher/addTeacher';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 // import { PrivateRoute } from '../../_routes/PrivateRoute';
+import Divider from '@material-ui/core/Divider';
+import SyllabusPlaningComponent from '../teacher/syllabus/syllabusPlaning';
 export class SideNav extends Component {
     public state: any;
     constructor(props: any) {
@@ -41,16 +44,22 @@ export class SideNav extends Component {
                                     </svg>
                                 </button>
                             </div>
+                            <Divider />
                             <div className="side_nav_content">
                                 <ul>
                                     <li><NavLink to="/" exact className="route_link"> <span className="route_link_icon"><DashboardIcon /></span> Dashboard</NavLink></li>
                                     {userData.roll === 1 &&
                                         <li><NavLink to="/branches" exact className="route_link"> <span className="route_link_icon"><AccountTreeRoundedIcon /></span> Branches</NavLink></li>
                                     }
-                                    <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Settings</NavLink></li>
-                                    <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Teacher</NavLink></li>
+                                    {(userData.roll === 1 || userData.roll === 2) &&
+                                        < li > <NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Teacher</NavLink></li>
+                                    }
+                                    {userData.roll === 3 &&
+                                        <li><NavLink to="/syllabus" exact className="route_link" ><span className="route_link_icon"><MenuBookIcon /></span>Syllabus Planing</NavLink></li>
+                                    }
                                     <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><LocalLibraryRoundedIcon /></span>Student</NavLink></li>
                                     <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Parent</NavLink></li>
+                                    <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Settings</NavLink></li>
                                 </ul>
                             </div>
                         </aside>
@@ -71,7 +80,12 @@ export class SideNav extends Component {
                             <Switch>
                                 <Route exact path='/' component={DashBoard} />
                                 <Route path='/dashboard' component={DashBoard} />
-                                <Route path='/addteacher' component={AddTeacher} />
+                                {(userData.roll === 1 || userData.roll === 2) &&
+                                    <Route path='/addteacher' component={AddTeacher} />
+                                }
+                                {userData.roll === 3 &&
+                                    <Route path='/syllabus' component={SyllabusPlaningComponent} />
+                                }
                                 <Route path='/branches' component={BranchDetails} />
                                 <Route path='/addbranch' component={AddBranch} />
                             </Switch>
@@ -79,7 +93,7 @@ export class SideNav extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

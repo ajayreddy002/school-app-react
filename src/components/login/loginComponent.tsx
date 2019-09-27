@@ -50,12 +50,18 @@ export class Login extends Component {
     submitLoginData = (loginData: LoginModel) => {
         LoginService.postLoginData('login', loginData)
             .then(data => {
-                console.log(data.data);
-                authenticationService.login(data.data);
-                // <Redirect to={{
-                //     pathname: '/'
-                // }}/>
+                if (data.status === 200) {
+                    authenticationService.login(data.data);
+                } else {
+                    toast.info('User not exists', {
+                        position: 'bottom-center',
+                        draggable: false,
+                        hideProgressBar: true,
+                        autoClose: 5000
+                    })
+                }
             }).catch(err => {
+                console.log(err)
                 if (err.message.includes(403)) {
                     toast.error('Invalid email or password', {
                         position: 'bottom-center',
@@ -64,7 +70,7 @@ export class Login extends Component {
                         autoClose: 5000
                     })
                 }
-                if (err.message.includes(500)) {
+                if (err.message.includes(500, 503)) {
                     toast.error('Something went wrong', {
                         position: 'bottom-center',
                         draggable: false,
@@ -77,7 +83,6 @@ export class Login extends Component {
     postNewUser = (newUserData: SignUpModel) => {
         LoginService.postSignUpData('school', newUserData)
             .then(data => {
-                console.log(data, 'data');
                 toast.success(`${newUserData.school_name} Registered successfully`, {
                     position: 'bottom-center',
                     draggable: false,
@@ -126,7 +131,6 @@ export class Login extends Component {
                                             password: ''
                                         }}
                                         onSubmit={(values: LoginModel, actions: FormikActions<LoginModel>, ) => {
-                                            console.log({ values, actions });
                                             if (values.email !== '' && values.password !== '') {
                                                 this.submitLoginData(values);
                                             } else {
