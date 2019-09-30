@@ -64,7 +64,7 @@
                     font-size: 1.3rem;
                     color: #494b74;
 
-                    .MuiSvgIcon-root {
+                    .MuiSvgIcon-root, img {
                         height: 20px;
                         width: 20px;
                         margin-left: -2px;
@@ -86,7 +86,7 @@
                     color: #ffffff;
 
                     .route_link_icon {
-                        .MuiSvgIcon-root {
+                        .MuiSvgIcon-root, img {
                             fill: #5d78ff;
                         }
                     }

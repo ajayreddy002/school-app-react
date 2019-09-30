@@ -16,6 +16,13 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 // import { PrivateRoute } from '../../_routes/PrivateRoute';
 import Divider from '@material-ui/core/Divider';
 import SyllabusPlaningComponent from '../teacher/syllabus/syllabusPlaning';
+import ExamsComponent from '../teacher/exams/examsComponent';
+import AssignMentComponent from '../teacher/exams/assignmentComponent';
+import AttendanceComponent from '../teacher/attendance and marks/attendanceComponent';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import attendanceIcon from '../../assets/images/icons/icon.svg';
+import StudentDashBoard from '../students/studentsDashBoard';
+// import LogoImage from '../../assets/images/My Post.png'
 export class SideNav extends Component {
     public state: any;
     constructor(props: any) {
@@ -34,6 +41,7 @@ export class SideNav extends Component {
                         <aside>
                             <div className="logo_block">
                                 <h3 className="logo"><span>E</span> Shiksha</h3>
+                                {/* <img className="img_fluid" src={LogoImage} alt=""/> */}
                                 <button className="svg_block">
                                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" >
                                         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -55,7 +63,12 @@ export class SideNav extends Component {
                                         < li > <NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Teacher</NavLink></li>
                                     }
                                     {userData.roll === 3 &&
-                                        <li><NavLink to="/syllabus" exact className="route_link" ><span className="route_link_icon"><MenuBookIcon /></span>Syllabus Planing</NavLink></li>
+                                        <React.Fragment>
+                                            <li><NavLink to="/syllabus" exact className="route_link" ><span className="route_link_icon"><MenuBookIcon /></span>Syllabus Planing</NavLink></li>
+                                            <li><NavLink to="/attendance" exact className="route_link" ><span className="route_link_icon"><img src={attendanceIcon} alt="Attendance" /></span>Attendance</NavLink></li>
+                                            <li><NavLink to="/assignment" exact className="route_link" ><span className="route_link_icon"><AssignmentIndIcon /></span>AssignMent</NavLink></li>
+                                            <li><NavLink to="/student" exact className="route_link" ><span className="route_link_icon"><AssignmentIndIcon /></span>student dashboard</NavLink></li>
+                                        </React.Fragment>
                                     }
                                     <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><LocalLibraryRoundedIcon /></span>Student</NavLink></li>
                                     <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><SettingsIcon /></span>Parent</NavLink></li>
@@ -88,6 +101,15 @@ export class SideNav extends Component {
                                 }
                                 <Route path='/branches' component={BranchDetails} />
                                 <Route path='/addbranch' component={AddBranch} />
+                                {/* Teacher Routes */}
+                                {userData.roll === 3 &&
+                                    <React.Fragment>
+                                        <Route path='/exams' component={ExamsComponent}></Route>
+                                        <Route path='/assignment' component={AssignMentComponent}></Route>
+                                        <Route path='/attendance' component={AttendanceComponent}></Route>
+                                        <Route path='/student' component={StudentDashBoard}></Route>
+                                    </React.Fragment>
+                                }
                             </Switch>
                             {/* <Routes/> */}
                         </div>

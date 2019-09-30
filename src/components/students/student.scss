@@ -1,0 +1,67 @@
+@import 'src/variables/fonts.scss';
+
+.student_block {
+    padding: 40px 15px 30px 15px;
+
+    .attendance {
+        padding: 20px 60px 20px 60px;
+
+        &.card {
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06), 0 7px 10px -5px rgba(177, 171, 173, 0);
+            border: none;
+        }
+
+        .img_block_std {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 19px 17px;
+            margin-top: 5px;
+            margin-right: 5px;
+            border-radius: 15px;
+            background-color: #999;
+            background-image: linear-gradient(to right, #436f96, #40678a, #3c5f7e, #395772, #354f67);
+
+            &.green_bg {
+                background-image: linear-gradient(to right, #a0ecd9, #86dfc4, #6cd1ae, #54c497, #3bb67f);
+            }
+
+            &.purple_bg {
+                background-image: linear-gradient(to right, #dd2191, #d6228e, #ce238a, #c72487, #c02583);
+            }
+            &.blue_bg {
+                background-image: linear-gradient(to right, #3cc1c9, #00b1d2, #009fda, #008adc, #1d72d4);
+            }
+            &.blue_green_bg {
+                background-image: linear-gradient(to right, #7a2dcb, #4347bf, #1450a8, #195289, #354f67);
+            }
+            &.y_bg {
+                background-image: linear-gradient(to right, #d59008, #d27f03, #ce6e04, #c95d09, #c34b0f);
+            }
+
+            img,
+            svg {
+                height: 50px;
+                width: 50px;
+                fill: #ffffff;
+            }
+        }
+
+        .text_block {
+            h5 {
+                font-size: 16px;
+                color: #6f6969;
+                text-align: center;
+                padding-top: 15px;
+                font-family: $header_font;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.col-md-3 {
+    margin-right: -15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
