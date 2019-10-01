@@ -22,6 +22,7 @@ import AttendanceComponent from '../teacher/attendance and marks/attendanceCompo
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import attendanceIcon from '../../assets/images/icons/icon.svg';
 import StudentDashBoard from '../students/studentsDashBoard';
+import ProfileComponent from '../profile/profileComponent';
 // import LogoImage from '../../assets/images/My Post.png'
 export class SideNav extends Component {
     public state: any;
@@ -101,6 +102,7 @@ export class SideNav extends Component {
                                 }
                                 <Route path='/branches' component={BranchDetails} />
                                 <Route path='/addbranch' component={AddBranch} />
+                                <Route path='/profile' component={ProfileComponent}></Route>
                                 {/* Teacher Routes */}
                                 {userData.roll === 3 &&
                                     <React.Fragment>

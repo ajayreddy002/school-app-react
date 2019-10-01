@@ -29,14 +29,25 @@
             &.purple_bg {
                 background-image: linear-gradient(to right, #dd2191, #d6228e, #ce238a, #c72487, #c02583);
             }
+
             &.blue_bg {
                 background-image: linear-gradient(to right, #3cc1c9, #00b1d2, #009fda, #008adc, #1d72d4);
             }
+
             &.blue_green_bg {
                 background-image: linear-gradient(to right, #7a2dcb, #4347bf, #1450a8, #195289, #354f67);
             }
+
             &.y_bg {
                 background-image: linear-gradient(to right, #d59008, #d27f03, #ce6e04, #c95d09, #c34b0f);
+            }
+
+            &.r_bg {
+                background-image: linear-gradient(to right, #e5a6a6, #f18e8b, #f9746f, #fd574f, #fd322d);
+            }
+
+            &.bl_whi_bg {
+                background-image: linear-gradient(to top, #c260d1, #c552be, #c643ab, #c53497, #c22484);
             }
 
             img,

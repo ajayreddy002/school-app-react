@@ -1,0 +1,83 @@
+@import 'src/variables/fonts.scss';
+
+.MuiTab-root {
+    padding-left: 65px !important;
+    background: transparent;
+    outline: none !important;
+}
+
+.MuiTab-wrapper {
+    align-items: initial !important;
+
+    svg {
+        margin-left: -37px;
+        margin-bottom: -21px;
+        position: absolute;
+        width: 2rem;
+        height: 1.5rem;
+    }
+}
+
+.MuiTab-labelIcon {
+    min-height: 50px !important;
+}
+
+.Mui-selected {
+    transition: color 0.3s ease !important;
+    background: #f2f3f7 !important;
+    border-radius: 4px !important;
+    color: #5867dd !important;
+}
+
+// .makeStyles-root-57{
+//     padding-top: 35px;
+// }
+.tabs_block {
+    padding-top: 40px;
+}
+
+.header {
+    display: flex;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 25px;
+    border-bottom: 1px solid #ebedf2;
+    min-height: 60px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    .header_block {
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #48465b;
+            font-family: $para_font;
+
+            small {
+                font-weight: 300;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                color: #74788d;
+            }
+        }
+    }
+
+    .tool_bar {
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-line-pack: end;
+        align-content: flex-end;
+    }
+}

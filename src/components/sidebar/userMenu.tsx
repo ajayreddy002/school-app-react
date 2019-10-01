@@ -45,7 +45,7 @@ export default function UserMenu(props: any) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem className="action_text" onClick={handleClose}><FaceRoundedIcon color="primary" className="icon" />Profile</MenuItem>
+                <MenuItem className="action_text" onClick={handleClose} ><FaceRoundedIcon color="primary" className="icon" to="/profile" />Profile</MenuItem>
                 <MenuItem className="action_text" onClick={handleClose}><AccountCircleRoundedIcon color="primary" className="icon" />My account</MenuItem>
                 <MenuItem className="action_text" onClick={logoutUser}><ExitToAppRoundedIcon color="secondary" className="icon" />Logout</MenuItem>
             </Menu>
