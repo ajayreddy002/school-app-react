@@ -23,7 +23,9 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import attendanceIcon from '../../assets/images/icons/icon.svg';
 import StudentDashBoard from '../students/studentsDashBoard';
 import ProfileComponent from '../profile/profileComponent';
-// import LogoImage from '../../assets/images/My Post.png'
+import CalendarComponent from '../calendar/calendarComponent';
+import EventNoteRoundedIcon from '@material-ui/icons/EventNoteRounded';
+// import LogoImage from '../../assets/images/logo_main2.png';
 export class SideNav extends Component {
     public state: any;
     constructor(props: any) {
@@ -69,6 +71,7 @@ export class SideNav extends Component {
                                             <li><NavLink to="/attendance" exact className="route_link" ><span className="route_link_icon"><img src={attendanceIcon} alt="Attendance" /></span>Attendance</NavLink></li>
                                             <li><NavLink to="/assignment" exact className="route_link" ><span className="route_link_icon"><AssignmentIndIcon /></span>AssignMent</NavLink></li>
                                             <li><NavLink to="/student" exact className="route_link" ><span className="route_link_icon"><AssignmentIndIcon /></span>student dashboard</NavLink></li>
+                                            <li><NavLink to="/timetable" exact className="route_link" ><span className="route_link_icon"><EventNoteRoundedIcon /></span>Timetable</NavLink></li>
                                         </React.Fragment>
                                     }
                                     <li><NavLink to="/addteacher" exact className="route_link" ><span className="route_link_icon"><LocalLibraryRoundedIcon /></span>Student</NavLink></li>
@@ -110,6 +113,7 @@ export class SideNav extends Component {
                                         <Route path='/assignment' component={AssignMentComponent}></Route>
                                         <Route path='/attendance' component={AttendanceComponent}></Route>
                                         <Route path='/student' component={StudentDashBoard}></Route>
+                                        <Route path='/timetable' component={CalendarComponent}></Route>
                                     </React.Fragment>
                                 }
                             </Switch>
