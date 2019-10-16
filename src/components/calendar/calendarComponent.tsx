@@ -10,7 +10,8 @@ export default class CalendarComponent extends React.Component {
         super(props)
         this.state = {
             days: [],
-            datesObje: moment()
+            datesObje: moment(),
+            isSelected: ''
         }
         this.state.days = moment.weekdaysShort();
         this.viewMonth = moment();
@@ -23,6 +24,9 @@ export default class CalendarComponent extends React.Component {
         this.setState({
             datesObje: this.viewMonth.add(num, datePart)
         });
+        this.setState({
+            isSelected: ''
+        })
         this.daysGrid();
     }
     daysGrid() {
@@ -43,8 +47,14 @@ export default class CalendarComponent extends React.Component {
             this.daysGridArr.push(obj);
         }
     }
-    selectDate(selectedDay: any, i: number){
+    selectDate(selectedDay: any, i: number) {
         this.selectedDay = selectedDay.value;
+        this.setState({
+            isSelected: i
+        })
+        // this.selectedDay = selectedDay.value;
+        // console.log(this.selectedDay);
+        // console.log(typeof (this.selectedDay));
     }
     render() {
         const date = new Date();
@@ -52,44 +62,39 @@ export default class CalendarComponent extends React.Component {
         return (
             <div className="calendar_main">
                 <div className="row">
-                    <div className="col-md-7 col-sm-12">
+                    <div className="col-md-8">
 
                     </div>
-                    <div className="col-md-5 col-sm-6">
-                        <div className='calendar'>
-                            <div className='month'>
-                                <i className="fas fa-arrow-left left left" onClick={() => this.changeMonth(-1, 'month')}></i>
-                                {this.state.datesObje.format('MMMM YYYY')}
-                                <i className="fas fa-arrow-right right" onClick={() => this.changeMonth(1, 'month')}></i>
-                            </div>
-                            <ul className='weekdays'>
-                                {this.state.days.map((item: any, i: number) =>
-                                    <li className='weekday' key={i}>
-                                        {item}
-                                    </li>
-                                )}
-                            </ul>
-                            <ul className='week'>
-                                {this.daysGridArr.map((day: any, i: number) =>
-                                    <li className={'day' + (day.value === parseInt(this.viewMonth.format('DD'))
-                                        && currentDate === this.viewMonth.format('MM/DD/YYYY') ? ' now' : '' + 
-                                        day.value === this.selectedDay ? ' selected':'')}
-                                        key={i}
-                                        onClick={() => this.selectDate(day, i)}>
-                                        {day.value === 0 &&
-                                            <span className='mute'>
+                    <div className="col-md-4 col-sm-6">
+                        <div className="main-container-wrapper">
+                            <div className="jzdbox1 jzdbasf jzdcal">
+                                <div className="calendar-container__header pb-1">
+                                    <i className="fas fa-arrow-left left" onClick={() => this.changeMonth(-1, 'month')}></i>
+                                    <div className="calendar-container__title">{this.state.datesObje.format('MMMM YYYY')}</div>
+                                    <i className="fas fa-arrow-right right" onClick={() => this.changeMonth(1, 'month')}></i>
+                                </div>
 
+                                <div className="calendar-table__header">
+                                    <div className="calendar-table__row">
+                                        {this.state.days.map((item: any, i: number) =>
+                                            <div key={i} className="calendar-table__col">{item}</div>
+                                        )}
+                                    </div>
+                                </div>
+                                {this.daysGridArr.map((date: any, i: number) =>
+                                    <React.Fragment key={i}>
+                                        {date.value !== 0 &&
+                                            <span onClick={() => this.selectDate(date, i)} className={`${(date.value === parseInt(this.viewMonth.format('DD'))
+                                                && currentDate === this.viewMonth.format('MM/DD/YYYY') ? 'circle' : '')}${(this.state.isSelected === i && this.selectedDay === date.value ? 'selected' : '')}`}>
+                                                {date.value}
                                             </span>
                                         }
-                                        {day.value !== 0 &&
-                                            day.value
+                                        {date.value === 0 &&
+                                            <span></span>
                                         }
-                                    </li>
+                                    </React.Fragment>
                                 )}
-                                {/* <li className='day now'>
-                                    15
-                                </li> */}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
