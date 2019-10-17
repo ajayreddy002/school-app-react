@@ -1,7 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700');
+@import 'src/variables/fonts.scss';
 
 .calendar_main {
     padding: 30px;
+
+    .text_block {
+        h2 {
+            font-size: 16px;
+            font-family: $header_font;
+            line-height: 18px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    .tt_block {
+        background-color: #ffffff;
+        box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
+
+        .row_header {
+            p {
+                font-size: 14px;
+                font-weight: 700;
+                font-family: $para_font;
+                line-height: 20px;
+                text-transform: uppercase;
+            }
+        }
+        .body_row {
+            padding-left: 40px;
+            p {
+                cursor: initial;
+                font-size: 13px;
+                font-weight: 500;
+                font-family: $para_font;
+                line-height: 20px;
+                text-transform: uppercase;
+                color: #929291;
+                padding-right: 10px;
+            }
+        }
+    }
 }
 
 
@@ -173,6 +213,7 @@ header {
     overflow: hidden;
     line-height: 40px;
     transition: 0.2s all ease-in;
+
     &:hover {
         background: #f8fafa;
         -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
@@ -201,6 +242,7 @@ header {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
     color: #ffffff !important;
     border-radius: 50%;
+
     &:hover {
         background: #66DCEC !important;
     }

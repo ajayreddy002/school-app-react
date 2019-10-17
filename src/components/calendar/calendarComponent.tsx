@@ -11,9 +11,11 @@ export default class CalendarComponent extends React.Component {
         this.state = {
             days: [],
             datesObje: moment(),
-            isSelected: ''
+            isSelected: '',
+            daysFullNames: []
         }
         this.state.days = moment.weekdaysShort();
+        this.state.daysFullNames = moment.weekdays();
         this.viewMonth = moment();
         this.changeMonth = this.changeMonth.bind(this);
         this.daysGrid = this.daysGrid.bind(this);
@@ -63,7 +65,60 @@ export default class CalendarComponent extends React.Component {
             <div className="calendar_main">
                 <div className="row">
                     <div className="col-md-8">
-
+                        <div className="text_block">
+                            <h2>Daily Routine</h2>
+                        </div>
+                        <div className="tt_block">
+                            <div className="row header m-0 row_header">
+                                <div className="col-md-3 col-sm-6">
+                                    <p>Day</p>
+                                </div>
+                                <div className="col-md-3 col-sm-6 ml-3">
+                                    <p>Time Slot</p>
+                                </div>
+                                <div className="col-md-3 col-sm-6">
+                                    <p>Subject</p>
+                                </div>
+                                <div className="col-md-3 col-sm-6">
+                                    <p>Teacher</p>
+                                </div>
+                            </div>
+                            <div className="row body_row">
+                                <div className="col-md-3">
+                                    <div className="days_names">
+                                        {this.state.days.slice(1, 7).map((days: string, index: number) =>
+                                            <p key={index}>{days}</p>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="col-md-3 col-sm-6">
+                                    <div>
+                                        <p>8:30Am - 9:00Am</p>
+                                    </div>
+                                    <div>
+                                        <p>9:15Am - 10:00Am</p>
+                                    </div>
+                                    <div>
+                                        <p>10:00Am - 10:45Am</p>
+                                    </div>
+                                    <div>
+                                        <p>10:50Am - 11:45Am</p>
+                                    </div>
+                                    <div>
+                                        <p>11:50Am - 12:50Pm</p>
+                                    </div>
+                                    <div>
+                                        <p>2:00Pm - 2:45Pm</p>
+                                    </div>
+                                    <div>
+                                        <p>2:50Pm - 3:45Pm</p>
+                                    </div>
+                                    <div>
+                                        <p>3:50Pm - 4:30Pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-md-4 col-sm-6">
                         <div className="main-container-wrapper">
