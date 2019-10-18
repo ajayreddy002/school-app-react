@@ -59,12 +59,12 @@ export default class CalendarComponent extends React.Component {
         // console.log(typeof (this.selectedDay));
     }
     render() {
-        const date = new Date();
-        const currentDate = date.toLocaleString('en-US').split(',')[0];
+        // const date = new Date();
+        // const currentDate = date.toLocaleString('en-US').split(',')[0];
         return (
             <div className="calendar_main">
-                <div className="row">
-                    <div className="col-md-8">
+                {/* <div className="row">
+                    <div className="col-md-8 spiral">
                         <div className="text_block">
                             <h2>Daily Routine</h2>
                         </div>
@@ -152,6 +152,92 @@ export default class CalendarComponent extends React.Component {
                             </div>
                         </div>
                     </div>
+                </div> */}
+                <div className="tt_block">
+                    <div className="header_block">
+                        <h3>School Timetable</h3>
+                    </div>
+                    <table className="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Monday</th>
+                                <th scope="col">Tuesday</th>
+                                <th scope="col">Wednesday</th>
+                                <th scope="col">Thursday</th>
+                                <th scope="col">Friday</th>
+                                <th scope="col">Sarurday </th>
+                            </tr>
+                        </thead>
+                        <tbody className="table_body">
+                            <tr>
+                                <th scope="row">08:45Am - 09:00Am</th>
+                                <td colSpan={6} className="text-center bg">Prayer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">09:05Am - 09:50Am</th>
+                                <td>Telugu</td>
+                                <td>English</td>
+                                <td>Social</td>
+                                <td>Maths</td>
+                                <td>Science</td>
+                                <td>Telugu</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">09:55Am - 10:40Am</th>
+                                <td>Social</td>
+                                <td>Maths</td>
+                                <td>English</td>
+                                <td>Physics</td>
+                                <td>Telugu</td>
+                                <td>Science</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10:45Am - 11:35Am</th>
+                                <td>English</td>
+                                <td>Social</td>
+                                <td>Maths</td>
+                                <td>Science</td>
+                                <td>Physics</td>
+                                <td>Telugu</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11:40Am - 12:45Pm</th>
+                                <td>Telugu</td>
+                                <td>Social</td>
+                                <td>Physics</td>
+                                <td>Maths</td>
+                                <td>English</td>
+                                <td>Science</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">12:45Pm - 01:45Pm</th>
+                                <td colSpan={6} className="text-center ybg">Lunch</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">01:45Pm - 02:30Pm</th>
+                                <td>Social</td>
+                                <td>Physics</td>
+                                <td>Maths</td>
+                                <td>Telugu</td>
+                                <td>English</td>
+                                <td>Science</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">02:35Pm - 03:40Pm</th>
+                                <td>Science</td>
+                                <td>Telugu</td>
+                                <td>Social</td>
+                                <td>Physics</td>
+                                <td>Maths</td>
+                                <td>English</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">03:45Pm - 04:30Pm</th>
+                                <td colSpan={6} className="text-center gbg">PET</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )
